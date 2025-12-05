@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>View Grades</title>
+</head>
+<body>
+    <h1>Your Grades</h1>
+    <table border="1">
+        <tr>
+            <th>Course</th>
+            <th>Grade</th>
+        </tr>
+        {% for course in grades %}
+        <tr>
+            <td>{{ course.course }}</td>
+            <td>{{ course.grade }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
