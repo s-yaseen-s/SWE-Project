@@ -6,7 +6,7 @@ class Professor:
         self.password = password  
 
     def get_students_in_course(self, course_id: str):
-          db = get_db()
+        db = get_db()
 
         sql = """SELECT s.stID, s.sname, r.grade
                  FROM Student s
