@@ -10,7 +10,12 @@ class Student:
         
         db = get_db()
 
+        valid_course = db.execute("SELECT cID FROM Course WHERE cID = ?", (course_id,)).fetchone()
+        
+        if valid_course is None:
+            raise Exception("The selected Course does not exist.")
+
         db.execute("""
-                INSERT INTO Registered_In VALUES(?, ?, None)
+                INSERT INTO Registered_In VALUES(?, ?, NULL)
                 """, (self.sID, course_id))
         db.commit()

@@ -27,10 +27,18 @@ def register_course():
     student = Student(student_id, "", "")
     try:
         student.RegisterCourse(course_id)
-        flash("Registered successfully.")
+        return f"""
+            <p>You have registered for course: {course_id}</p>
+            <a href='/StudentHome'>Click here to go back to Student Home</a>
+        """
     except sqlite3.IntegrityError:
-        flash("Alreaady registered")
+        return f"""
+            <h1>Error</h1>
+            <p>You are already registered for this course.</p>
+        """
     except Exception as e:
-        flash(f"Error: {str(e)}.")
-
-    return redirect("/StudentHome")
+        return f"""
+            <h1>Error</h1>
+            <p>{str(e)}</p>
+            <a href='/StudentHome'>Click here to go back</a>
+        """
