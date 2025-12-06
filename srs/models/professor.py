@@ -20,3 +20,19 @@ class Professor:
         students = [dict(row) for row in rows]
 
         return students
+    
+    def assign_grade(self, student_id, course_id, grade):
+        import sqlite3
+        db = sqlite3.connect('database.db')
+        cursor = db.cursor()
+        
+        cursor.execute('''
+            UPDATE Registered_In 
+            SET grade = ? 
+            WHERE stuID = ? AND coID = ?
+        ''', (grade, student_id, course_id))
+        
+        db.commit()
+        db.close()
+        
+        return f"Grade {grade} has been assigned to student {student_id} for course {course_id}"
