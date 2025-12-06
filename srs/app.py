@@ -17,6 +17,10 @@ def init_db():
     db = get_db()
     with app.open_resource("database\\schema.sql", mode="r") as f:
         db.executescript(f.read())
+
+    with app.open_resource("database\\data.sql", mode="r") as f:
+            db.executescript(f.read())
+    
     db.commit()
 
 app = Flask(__name__)
