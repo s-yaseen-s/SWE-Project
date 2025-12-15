@@ -6,11 +6,11 @@ student_bp = Blueprint('student', __name__)
 
 @student_bp.route('/view_grades')
 def view_grades():
-    sgrades = [
-        {'course': 'Mathematics', 'grade': 'A'},
-        {'course': 'Science', 'grade': 'B+'},
-        {'course': 'History', 'grade': 'A-'}
-    ]
+    student_id = session.get('userID')
+    if not student_id:
+        return "Not logged in"
+    student = Student(student_id, "", "")   
+    sgrades = student.get_grades()
     return render_template('view_grades.html', grades=sgrades)
 
 @student_bp.route('/course_reg')

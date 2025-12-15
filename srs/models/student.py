@@ -19,3 +19,14 @@ class Student:
                 INSERT INTO Registered_In VALUES(?, ?, NULL)
                 """, (self.sID, course_id))
         db.commit()
+
+    def get_grades(self):
+        db = get_db()
+
+        sql = """SELECT c.cname, r.grade FROM Course c 
+                join Registered_In r ON c.cID = r.coID 
+                WHERE r.stuID = ?;"""
+        cursor = db.execute(sql, (self.sID,))
+        rows = cursor.fetchall()
+        grades = [{'course': row[0], 'grade': row[1]} for row in rows]
+        return grades

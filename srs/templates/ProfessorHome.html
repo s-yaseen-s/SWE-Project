@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Professor Home</title>
+</head>
+<body>
+
+    <h1>Professor Home</h1>
+
+
+    <p>
+        Professor ID: {{ professor.pID }}<br>
+        {% if professor.pname %}
+            Name: {{ professor.pname }}<br>
+        {% endif %}
+    </p>
+
+    <hr>
+
+    <h2>My Courses</h2>
+    {% if courses %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td>{{ course.cID }}</td>
+                    <td>{{ course.cname }}</td>
+                    <td>
+                       
+                        <a href="{{ url_for('professor.get_students_in_course', c_id=course.cID) }}">
+                            View Registered Students
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No courses found for this professor.</p>
+    {% endif %}
+
+    <hr>
+
+    <p>
+        <a href="/logout">Logout</a>
+    </p>
+
+</body>
+</html>

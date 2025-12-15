@@ -3,9 +3,11 @@ from models.professor import Professor
 
 professor_bp = Blueprint("professor", __name__, url_prefix="/professor")
 
-@professor_bp.route("/<p_id>/courses/<c_id>/students")
-def get_students_in_course(p_id, c_id):
-    prof = Professor(pID=p_id, pname="", password="")
+@professor_bp.route("/courses/<c_id>/students")
+def get_students_in_course(c_id):
+    p_id = session["userID"]
+    p_name = session.get("pname", "")
+    prof = Professor(pID=p_id, pname=p_name, password="")
     students = prof.get_students_in_course(c_id)
     return render_template(
         "professor_students.html",
@@ -25,4 +27,5 @@ def assign_grade():
     
     professor = Professor(pID=professor_id, pname="", password="")
     result = professor.assign_grade(student_id, course_id, grade)
+
     return result
