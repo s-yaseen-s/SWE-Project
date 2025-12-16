@@ -10,7 +10,7 @@ def init_db():
         db.executescript(f.read())
 
     with app.open_resource("database\\data.sql", mode="r") as f:
-            db.executescript(f.read())
+        db.executescript(f.read())
     
     db.commit()
 
