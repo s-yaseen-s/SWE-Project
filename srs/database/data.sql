@@ -16,10 +16,10 @@ INSERT INTO Professor (pID, pname, pass) VALUES
 ('P01', 'Dr. Alan Turing', 'prof123'),
 ('P02', 'Dr. Grace Hopper', 'prof123');
 
-INSERT INTO Course (cID, cname, capacity, PrID) VALUES 
-('CS101', 'Intro to Python', 30, 'P01'),
-('CS102', 'Data Structures', 25, 'P01'),
-('MATH101', 'Calculus I', 50, 'P02');
+INSERT INTO Course (cID, cname, capacity, semester, credits, PrID) VALUES 
+('CS101', 'Intro to Python', 30, 'Fall', 2 , 'P01'),
+('CS102', 'Data Structures', 25, 'Fall', 3, 'P01'),
+('MATH101', 'Calculus I', 50, 'Spring', 3, 'P02');
 
 INSERT INTO Registered_In (stuID, coID, grade) VALUES 
 ('S01', 'CS101', 'A'),

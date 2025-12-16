@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 from config import DATABASE_PATH
 from controllers.student_controller import student_bp
 from controllers.professor_controller import professor_bp
+from controllers.admin_controller import admin_bp
 from repositories.studentRepo import studentRepo
 from repositories.professorRepo import professorRepo
 from repositories.adminRepo import adminRepo
@@ -22,6 +23,7 @@ app.secret_key = "prjct"
 
 app.register_blueprint(student_bp)
 app.register_blueprint(professor_bp)
+app.register_blueprint(admin_bp)
 
 app.teardown_appcontext(close_db)
 
