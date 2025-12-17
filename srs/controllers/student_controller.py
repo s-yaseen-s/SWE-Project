@@ -1,7 +1,7 @@
 from flask import Flask, render_template, session, request, flash, redirect, Blueprint
-from models.student import Student
-from repositories.studentRepo import studentRepo
-from db import get_db
+from srs.models.student import Student
+from srs.repositories.studentRepo import studentRepo
+from srs.db import get_db
 import sqlite3
 
 student_bp = Blueprint('student', __name__)

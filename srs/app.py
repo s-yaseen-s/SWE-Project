@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect, session
-from config import DATABASE_PATH
-from controllers.student_controller import student_bp
-from controllers.professor_controller import professor_bp
-from controllers.admin_controller import admin_bp
-from repositories.studentRepo import studentRepo
-from repositories.professorRepo import professorRepo
-from repositories.adminRepo import adminRepo
-from db import get_db, close_db
+from srs.config import DATABASE_PATH
+from srs.controllers.student_controller import student_bp
+from srs.controllers.professor_controller import professor_bp
+from srs.controllers.admin_controller import admin_bp
+from srs.repositories.studentRepo import studentRepo
+from srs.repositories.professorRepo import professorRepo
+from srs.repositories.adminRepo import adminRepo
+from srs.db import get_db, close_db
 
 def init_db():
     db = get_db()

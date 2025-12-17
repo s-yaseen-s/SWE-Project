@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, session, request
-from models.professor import Professor
-from repositories.professorRepo import professorRepo
+from srs.models.professor import Professor
+from srs.repositories.professorRepo import professorRepo
 
 professor_bp = Blueprint("professor", __name__, url_prefix="/professor")
 

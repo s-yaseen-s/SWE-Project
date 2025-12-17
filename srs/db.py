@@ -1,6 +1,6 @@
 import sqlite3
 from flask import g
-from config import DATABASE_PATH
+from srs.config import DATABASE_PATH
 
 def get_db():
     if "db" not in g:

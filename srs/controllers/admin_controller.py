@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, session
-from repositories.adminRepo import adminRepo
-from db import get_db
+from srs.repositories.adminRepo import adminRepo
+from srs.db import get_db
 
 admin_bp = Blueprint("admin", __name__)
 
