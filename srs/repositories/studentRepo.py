@@ -29,3 +29,10 @@ class studentRepo:
     def getLogin(self, id, password):
 
         return self.db.execute("""SELECT sname FROM Student WHERE stID = ? AND pass = ?""", (id, password)).fetchone()
+        
+def DropCourse(self, course_id):
+    self.db.execute(
+        "DELETE FROM Registered_In WHERE stuID = ? AND coID = ?",
+        (self.student_id, course_id),
+    )
+    self.db.commit()
