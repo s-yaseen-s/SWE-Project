@@ -14,7 +14,7 @@ def test_student_view_grades(mock_repo_class, mock_current_user, client):
 
     mock_current_user.sID = "S01"
     mock_current_user.is_authenticated = True
-    mock_current_user.get_GPA.return_value = 3.5
+    mock_current_user.get_GPA = MagicMock(return_value = 3.5)
  
     response = client.get("/view_grades")
 
