@@ -17,4 +17,26 @@
 
 </form>
 
+<h3>Available Courses</h3>
+<table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for course in courses %}
+        <tr>
+            <td>{{ course[0] }}</td>
+            <td>{{ course[1] }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">No courses available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 </html>

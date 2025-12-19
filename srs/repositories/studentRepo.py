@@ -4,7 +4,6 @@ class studentRepo:
         self.sID = studentID
 
     def RegisterCourse(self, course_id):
-        
 
         valid_course = self.db.execute("SELECT cID FROM Course WHERE cID = ?", (course_id,)).fetchone()
         
@@ -15,6 +14,10 @@ class studentRepo:
                 INSERT INTO Registered_In VALUES(?, ?, NULL)
                 """, (self.sID, course_id))
         self.db.commit()
+
+    def getAvailableCourses(self):
+
+        return self.db.execute("""SELECT cID, cname FROM Course""").fetchall()
 
     def get_grades(self):
 
@@ -30,9 +33,9 @@ class studentRepo:
 
         return self.db.execute("""SELECT sname FROM Student WHERE stID = ? AND pass = ?""", (id, password)).fetchone()
         
-def DropCourse(self, course_id):
-    self.db.execute(
-        "DELETE FROM Registered_In WHERE stuID = ? AND coID = ?",
-        (self.student_id, course_id),
-    )
-    self.db.commit()
+    def DropCourse(self, course_id):
+        self.db.execute(
+            "DELETE FROM Registered_In WHERE stuID = ? AND coID = ?",
+          (self.student_id, course_id),
+        )
+        self.db.commit()

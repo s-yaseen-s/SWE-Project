@@ -21,7 +21,13 @@ def view_grades():
 @student_bp.route('/course_reg')
 def course_reg():
 
-    return render_template("register_course.html")
+    student_id = session["userID"]
+
+    db = get_db()
+    
+    courses = studentRepo(db, student_id).getAvailableCourses()
+
+    return render_template("register_course.html", courses = courses)
 
 @student_bp.route('/register_course', methods=['POST'])
 def register_course():
