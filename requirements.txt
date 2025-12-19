@@ -1,4 +1,4 @@
 Flask
 pytest
 pytest-Flask
-flask-login
+flask_login
